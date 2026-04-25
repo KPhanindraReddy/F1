@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>F1 Apex Online</title>
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>F1 Apex — Online + Local Multiplayer</h1>
+      <p>Play on phone/laptop over internet after deploying to Vercel.</p>
+    </header>
+
+    <section id="netPanel" class="net-panel">
+      <label>
+        Mode
+        <select id="modeSelect">
+          <option value="local">Local (same device)</option>
+          <option value="online-host">Online Host (create room)</option>
+          <option value="online-join">Online Join (room code)</option>
+        </select>
+      </label>
+      <label>
+        Room code
+        <input id="roomCode" placeholder="e.g. f1-room-7" />
+      </label>
+      <button id="connectBtn">Start / Connect</button>
+      <span id="netStatus">Not connected</span>
+    </section>
+
+    <main>
+      <section class="hud-panel" id="eventFeed"></section>
+      <canvas id="track" width="1200" height="700" aria-label="Racing track"></canvas>
+      <section class="hud-panel" id="scoreboard"></section>
+    </main>
+
+    <section id="touchControls" class="touch-controls">
+      <div class="group">
+        <button data-key="left">◀</button>
+        <button data-key="right">▶</button>
+      </div>
+      <div class="group">
+        <button data-key="throttle">▲</button>
+        <button data-key="brake">▼</button>
+      </div>
+      <div class="group">
+        <button data-key="drs">DRS</button>
+        <button data-key="ers">ERS</button>
+      </div>
+    </section>
+
+    <footer>
+      <button id="resetRace">Restart Race</button>
+      <p>
+        Local controls: P1 (WASD/Shift/Space), P2 (Arrows/Enter/Right Ctrl)
+      </p>
+    </footer>
+
+    <script type="module" src="src/game.js"></script>
+  </body>
+</html>

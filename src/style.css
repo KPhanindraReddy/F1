@@ -1,0 +1,106 @@
+:root {
+  --bg: #091017;
+  --panel: #111c27;
+  --panel-2: #172634;
+  --accent: #eb5757;
+  --text: #f5f9ff;
+  --muted: #9ab0c6;
+  --good: #6fcf97;
+  --warn: #f2c94c;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, Segoe UI, system-ui, sans-serif;
+  background: radial-gradient(circle at top, #102131, var(--bg) 65%);
+  color: var(--text);
+}
+header, footer { text-align: center; padding: 0.6rem 1rem; }
+header p, footer p { color: var(--muted); margin: 0.2rem 0; }
+
+.net-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: end;
+  justify-content: center;
+  padding: 0.5rem 0.8rem;
+}
+.net-panel label { display: grid; gap: 0.2rem; color: var(--muted); font-size: 0.9rem; }
+.net-panel input, .net-panel select {
+  background: #0f1b28;
+  color: white;
+  border: 1px solid #2b4256;
+  border-radius: 6px;
+  padding: 0.45rem;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 280px minmax(600px, 1fr) 320px;
+  gap: 0.8rem;
+  padding: 0.6rem 0.8rem 0.5rem;
+  align-items: start;
+}
+canvas {
+  width: 100%;
+  max-width: 1200px;
+  border: 2px solid #32475a;
+  border-radius: 12px;
+  background: #0f1b28;
+}
+.hud-panel {
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
+  border: 1px solid #2c4356;
+  border-radius: 10px;
+  padding: 0.75rem;
+  min-height: 700px;
+  overflow: auto;
+  font-size: 0.9rem;
+}
+.event {
+  border-left: 3px solid var(--accent);
+  padding: 0.4rem 0.5rem;
+  margin: 0.4rem 0;
+  background: rgba(255,255,255,0.03);
+}
+.event.good { border-left-color: var(--good); }
+.event.warn { border-left-color: var(--warn); }
+button {
+  border: none;
+  background: var(--accent);
+  color: white;
+  border-radius: 7px;
+  font-weight: 700;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+}
+table { width: 100%; border-collapse: collapse; }
+th, td { border-bottom: 1px solid #2d4255; padding: 0.3rem; text-align: left; }
+
+.touch-controls {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  justify-content: space-between;
+  padding: 0.6rem;
+  pointer-events: none;
+}
+.touch-controls .group { display: flex; gap: 0.45rem; pointer-events: auto; }
+.touch-controls button {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: rgba(235,87,87,0.86);
+}
+
+@media (max-width: 1200px) {
+  main { grid-template-columns: 1fr; }
+  .hud-panel { min-height: 220px; }
+}
+@media (pointer: coarse) {
+  .touch-controls { display: flex; }
+  body { padding-bottom: 90px; }
+}
